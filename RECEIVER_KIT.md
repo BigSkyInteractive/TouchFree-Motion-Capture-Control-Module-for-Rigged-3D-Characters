@@ -140,7 +140,7 @@ Public knobs (constructor `opts`): `ease` (default 0.5), `restAfterMs`
    `payload.keypoints` to frame the character the way the camera frames
    the person.
 
-A working reference implementation of all of this — scene, framing,
-lighting, hint, schema pin — ships with TouchFree as the Claire demo page
-(`claire_rig.js` beside the module). It is the page this module was
-extracted from, and it is the answer to "show me how it's integrated."
+`examples/minimal.html` in this kit is the smallest complete page. A full
+reference implementation — scene, set, camera framing that follows the
+performer, hint text, schema pin — ships inside the TouchFree product as
+the Claire demo page; it is the page this module was extracted from.
