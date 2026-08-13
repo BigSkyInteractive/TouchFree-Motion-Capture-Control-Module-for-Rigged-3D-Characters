@@ -63,6 +63,13 @@ bind-time retargeting correction that keeps Mixamo thumbs honest.
    the same job Unity's Humanoid Avatar does internally, written out for
    three.js.
 
+## Also from TouchFree
+
+Building **2D effects** from the landmark stream instead of driving a rig:
+see [touchfree-fluid-body](https://github.com/BigSkyInteractive/touchfree-fluid-body)
+— webcam body tracking driving a WebGL fluid simulation, fully configurable
+from one JSON.
+
 ## Versioning
 
 The wire format is frozen as schema **`tf-bones-1`** and guarded by a
