@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>TouchFree — minimal character page</title>
+  <style>
+    html, body { margin: 0; height: 100%; background: #11121a; overflow: hidden; }
+    /* The mirror lives HERE, on the finished image — never as a negative
+       scale inside the scene, which corrupts world-matrix rotations. */
+    #stage canvas { width: 100vw; height: 100vh; display: block; transform: scaleX(-1); }
+    #hint { position: fixed; top: 1em; width: 100%; text-align: center;
+            color: #dfe2f0; font: 16px system-ui; opacity: 0; transition: opacity .5s; }
+  </style>
+  <!-- three.js from a CDN for this example. In production, serve your own copy. -->
+  <script type="importmap">
+    { "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    } }
+  </script>
+</head>
+<body>
+<div id="stage"></div>
+<div id="hint">step into view</div>
+<script type="module">
+  import * as THREE from 'three';
+  import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+  import { VmcMixamoRig } from '../vmc_mixamo.js';
+
+  const TOUCHFREE = 'ws://localhost:8080/ws';   // your TouchFree machine
+  const MODEL = 'character.glb';                // your T-posed Mixamo GLB
+  const SCHEMA = 'tf-bones-1';                  // pinned wire contract
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  document.getElementById('stage').appendChild(renderer.domElement);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 50);
+  camera.position.set(0, 1.4, 3.0);
+  camera.lookAt(0, 1.0, 0);
+  scene.add(new THREE.HemisphereLight(0xbfd4ff, 0x30203a, 1.2));
+  const key = new THREE.DirectionalLight(0xffffff, 2.0);
+  key.position.set(2.5, 4, 3);
+  scene.add(key);
+
+  function resize() {
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+  }
+  addEventListener('resize', resize); resize();
+
+  const rig = new VmcMixamoRig(THREE);
+
+  new GLTFLoader().load(MODEL, (gltf) => {
+    scene.add(gltf.scene);
+    scene.updateMatrixWorld(true);
+    const problem = rig.bind(gltf.scene);
+    if (problem) console.error('[rig]', problem);
+  });
+
+  function connect() {
+    const ws = new WebSocket(TOUCHFREE);
+    ws.onmessage = (e) => {
+      const m = JSON.parse(e.data);
+      if (m.type !== 'body_state') return;
+      if (m.payload.schema !== SCHEMA) {
+        console.error(`[rig] schema mismatch: page speaks ${SCHEMA}, `
+                      + `server sent ${m.payload.schema}`);
+        return;
+      }
+      rig.apply(m.payload);
+    };
+    ws.onclose = () => setTimeout(connect, 2000);
+  }
+  connect();
+
+  const hint = document.getElementById('hint');
+  (function frame() {
+    requestAnimationFrame(frame);
+    rig.step();
+    hint.style.opacity = (rig.ready && rig.lost()) ? '1' : '0';
+    renderer.render(scene, camera);
+  })();
+</script>
+</body>
+</html>
