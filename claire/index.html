@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claire</title>
+<style>
+  html, body { margin: 0; height: 100%; overflow: hidden; background: #11121a; }
+  #stage { position: fixed; inset: 0; }
+  /* THE MIRROR. She reads as a reflection: raise your right hand and the hand
+     on your side of the screen goes up. Done to the finished image, so the
+     scene graph stays untouched -- mirroring with a negative scale inside the
+     scene breaks getWorldQuaternion during the retarget (see claire_rig.js). */
+  #stage canvas { display: block; transform: scaleX(-1); }
+  #hint {
+    position: fixed; left: 0; right: 0; bottom: 6vh; text-align: center;
+    font: 400 2.2vh "Segoe UI", system-ui, sans-serif; color: #cbb6dd;
+    opacity: 0; transition: opacity .4s; pointer-events: none;
+  }
+  #fault {
+    display: none; position: fixed; left: 4vw; top: 4vh; right: 4vw;
+    padding: 16px 20px; border-radius: 10px; background: #3a1020;
+    border: 1px solid #a02040; color: #ffd7e2;
+    font: 400 2vh/1.5 "Segoe UI", system-ui, sans-serif;
+  }
+</style>
+</head>
+<body>
+  <div id="stage"></div>
+  <div id="hint"></div>
+  <!-- A failure says so on screen. A content page that half-works hides its
+       own cause and costs hours later. -->
+  <div id="fault"></div>
+
+  <!-- three.js is ESM only from r150, so the bare "three" specifier its
+       loaders import needs a map. Vendored locally, never a CDN: the kiosk
+       runs offline and the pages are same-origin. -->
+  <script type="importmap">
+  { "imports": { "three": "./lib/three.module.min.js" } }
+  </script>
+  <script type="module" src="./claire_rig.js"></script>
+</body>
+</html>
