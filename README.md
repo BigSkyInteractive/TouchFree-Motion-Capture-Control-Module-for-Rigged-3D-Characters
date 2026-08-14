@@ -65,10 +65,15 @@ bind-time retargeting correction that keeps Mixamo thumbs honest.
 
 ## Also from TouchFree
 
-Building **2D effects** from the landmark stream instead of driving a rig:
-see [touchfree-fluid-body](https://github.com/BigSkyInteractive/touchfree-fluid-body)
-— webcam body tracking driving a WebGL fluid simulation, fully configurable
-from one JSON.
+Building **2D experiences** from the landmark stream instead of driving a
+3D rig:
+
+- [touchfree-fluid-body](https://github.com/BigSkyInteractive/touchfree-fluid-body)
+  — body tracking driving a WebGL fluid simulation, fully configurable
+  from one JSON
+- [touchfree-puppet-2d](https://github.com/BigSkyInteractive/touchfree-puppet-2d)
+  — a layered 2D cartoon puppet that copies the person, Character
+  Animator-style
 
 ## Versioning
 
