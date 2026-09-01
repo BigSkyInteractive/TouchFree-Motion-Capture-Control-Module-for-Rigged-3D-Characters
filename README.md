@@ -66,8 +66,8 @@ bind-time retargeting correction that keeps Mixamo thumbs honest.
 
 ## Also from TouchFree
 
-Building **2D experiences** from the landmark stream instead of driving a
-3D rig:
+Building **3D experiences** from the landmark stream instead of driving a
+2D rig:
 
 - [touchfree-fluid-body](https://github.com/BigSkyInteractive/touchfree-fluid-body)
   — body tracking driving a WebGL fluid simulation, fully configurable
@@ -85,7 +85,7 @@ never a silent edit.
 
 ## Keywords
 
-MediaPipe motion capture · VMC protocol · Virtual Motion Capture · Unity
+TouchFree motion capture · VMC protocol · Virtual Motion Capture · Unity
 Humanoid bones · HumanBodyBones · Mixamo retargeting · three.js rigged
 character · VRM T-pose · BlazePose · hand tracking · finger tracking ·
 webcam mocap · markerless motion capture · glTF avatar · VTuber tooling
