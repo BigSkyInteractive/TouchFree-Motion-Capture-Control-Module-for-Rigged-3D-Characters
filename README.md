@@ -1,8 +1,9 @@
 # TouchFree Receiver kit for VMC motion capture to Unity Standard Rigged 3D Charactes / three.js
 
 Webcam **motion capture without wearables**: [TouchFree](https://bigskyinteractive.com)
-tracks a person's body and hands with **MediaPipe** (BlazePose + Hand
-Landmarker), solves the skeleton into **Unity-standard Humanoid bone
+tracks a person's body and hands with Body and Hand VMC Output from TouchFree Desktop.
+
+Solves the skeleton into **Unity-standard Humanoid bone
 rotations** — the **VMC protocol's** own vocabulary — and broadcasts them.
 This kit is everything a receiver needs to drive a rigged 3D character from
 that stream: a **Mixamo model translation** module for three.js, a complete
