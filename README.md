@@ -1,13 +1,9 @@
 # TouchFree Receiver kit for VMC motion capture to Unity Standard Rigged 3D Charactes / three.js
 
-Webcam **motion capture without wearables**: [TouchFree](https://bigskyinteractive.com)
-tracks a person's body and hands with Body and Hand VMC Output from TouchFree Desktop.
+Control a Mixamo rigged 3D character with [TouchFree](https://bigskyinteractive.com] camera based Motion Capture.
 
-Solves the skeleton into **Unity-standard Humanoid bone
-rotations** — the **VMC protocol's** own vocabulary — and broadcasts them.
-This kit is everything a receiver needs to drive a rigged 3D character from
-that stream: a **Mixamo model translation** module for three.js, a complete
-integration brief written for AI assistants, and the full production demo.
+Solves the skeleton into **Unity-standard Humanoid bone rotations** — the **VMC protocol's** own vocabulary — and broadcasts them.
+This kit is everything a receiver needs to drive a rigged 3D character from that stream: a **Mixamo model translation** module for three.js, a complete integration brief written for AI assistants, and the full production demo.
 
 **TouchFree → VMC, based on the Unity standard, translated to Adobe Mixamo 3D character rigs.**
 
@@ -52,10 +48,7 @@ bind-time retargeting correction that keeps Mixamo thumbs honest.
 
 ## How the translation works
 
-1. **Sender-side solve.** TouchFree turns MediaPipe landmarks into finished
-   bone rotations — local, parent-relative quaternions `[x, y, z, w]`,
-   measured from the canonical VRM T-pose. Receivers never do landmark
-   math; every receiver shows the same body.
+1. **Sender-side solve.** TouchFree provides quality low latency body and hand landmarks into finished VRM format with bone rotations, local, parent-relative quaternions `[x, y, z, w]`, measured from the canonical VRM T-pose.
 2. **Two transports, same bones.** The VMC protocol for avatar apps; JSON
    over WebSocket (`body_state`, schema `tf-bones-1`) for web pages.
 3. **Receiver-side retargeting.** `vmc_mixamo.js` maps Unity bone names to
