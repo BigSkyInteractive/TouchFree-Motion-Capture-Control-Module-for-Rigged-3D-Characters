@@ -1,4 +1,4 @@
-# TouchFree Receiver Kit — MediaPipe VMC motion capture to Mixamo / three.js
+# TouchFree Receiver kit for VMC motion capture to Unity Standard Rigged 3D Charactes / three.js
 
 Webcam **motion capture without wearables**: [TouchFree](https://bigskyinteractive.com)
 tracks a person's body and hands with **MediaPipe** (BlazePose + Hand
@@ -8,7 +8,7 @@ This kit is everything a receiver needs to drive a rigged 3D character from
 that stream: a **Mixamo model translation** module for three.js, a complete
 integration brief written for AI assistants, and the full production demo.
 
-**MediaPipe → VMC, based on the Unity standard, translated to Mixamo rigs.**
+**TouchFree → VMC, based on the Unity standard, translated to Adobe Mixamo 3D character rigs.**
 
 ## Quickstart: hand it to your AI
 
