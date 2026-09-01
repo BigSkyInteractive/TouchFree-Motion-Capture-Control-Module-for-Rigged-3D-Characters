@@ -2,10 +2,11 @@
 
 Control a Mixamo rigged 3D character with [TouchFree](https://bigskyinteractive.com] camera based Motion Capture.
 
-Solves the skeleton into **Unity-standard Humanoid bone rotations** — the **VMC protocol's** own vocabulary — and broadcasts them.
-This kit is everything a receiver needs to drive a rigged 3D character from that stream: a **Mixamo model translation** module for three.js, a complete integration brief written for AI assistants, and the full production demo.
+Solves the 3D Rigging format for real-time motion capture control into **Unity-standard Humanoid bone rotations** with the **VMC protocol's** own vocabulary to Adobe Mixamo Rigged Character.
 
-**TouchFree → VMC, based on the Unity standard, translated to Adobe Mixamo 3D character rigs.**
+This kit is the full control module and sample background, foreground scene and character positioning ready for mirrored screen motion capture control of the head, body, and hands using  three.js, and the TouchFree Desktop.
+
+**TouchFree Desktop to VMC output, based on the Unity standard, translated to Adobe Mixamo 3D character rigs.**
 
 ## Quickstart: hand it to your AI
 
