@@ -1,4 +1,4 @@
-# TouchFree Receiver kit for VMC motion capture to Unity Standard Rigged 3D Charactes / three.js
+# TouchFree 3D Character Control Module for VMC motion capture to Unity Standard Rigged 3D Charactes / three.js
 
 Control a Mixamo rigged 3D character with [TouchFree](https://bigskyinteractive.com] camera based Motion Capture.
 
